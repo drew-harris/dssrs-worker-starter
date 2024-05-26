@@ -7,10 +7,13 @@ export const env = createEnv({
     DATABASE_URL: z.string().url(),
     REDIS_PASSWORD: z.string(),
     REDIS_HOST: z.string(),
-    QUEUE_NAME: z.string(),
   },
 
-  runtimeEnv: process.env,
+  runtimeEnvStrict: {
+    DATABASE_URL: process.env["DATABASE_URL"],
+    REDIS_PASSWORD: process.env["REDIS_PASSWORD"],
+    REDIS_HOST: process.env["REDIS_HOST"],
+  },
 
   emptyStringAsUndefined: true,
 });
